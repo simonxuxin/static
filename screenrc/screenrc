@@ -1,0 +1,24 @@
+startup_message off
+defscrollback 5000
+vbell off
+#caption always "%{= .bw}%-w%{= rw}%n %t%{-}%+w %-= [ %3` ]"
+shell -$SHELL
+
+#backtick 1 0 0 whoami
+#backtick 2 0 0 hostname
+#backtick 3 60 60 uptime
+#backtick 4 1 1 multime
+#hardstatus alwayslastline "%{+b .kw}%1` | %2` | %3` %="
+termcapinfo xterm|xterms|xs|rxvt|screen ti@:te@
+
+hardstatus alwayslastline
+#hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%<"
+hardstatus string '%{= kG}[ %{W}%H%{g} ][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W} %m-%d %{W}%c %{g}]'
+#
+#screen
+#screen
+#screen
+#screen
+#screen
+#select 0
+

@@ -38,13 +38,13 @@ else
 endif
 
 set cursorline
-hi Cursorline cterm=NONE ctermbg=black guibg=lightcyan
+hi Cursorline cterm=NONE ctermbg=lightgrey guibg=lightcyan
 
 " text format
 if has("win32")
 	set gfn=Consolas:h11:cANSI
 else
-	set gfn=Consolas\ 11
+    set gfn=Consolas\ 11
 endif
 
 " Only do this part when compiled with support for autocommands.

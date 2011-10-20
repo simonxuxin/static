@@ -39,6 +39,9 @@ endif
 
 set cursorline
 hi Cursorline cterm=NONE ctermbg=lightgrey guibg=lightcyan
+set cursorcolumn
+hi Cursorcolumn cterm=NONE ctermbg=lightgrey guibg=lightcyan
+hi Search cterm=NONE ctermbg=lightblue
 
 " text format
 if has("win32")

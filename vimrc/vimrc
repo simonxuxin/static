@@ -26,21 +26,17 @@ map <space> <c-f>
 if has("gui_running")
 	set mouse=a
 	set go=cegrLtbm
-	let $lang = "en_US"
-	set langmenu=en_US
-	source $VIMRUNTIME/delmenu.vim
-	source $VIMRUNTIME/menu.vim
 	set laststatus=2
 	set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
 else
 	let &t_Co=256
-	"colorscheme slate
 endif
 
+colorscheme molokai
 set cursorline
-hi Cursorline cterm=NONE ctermbg=lightgrey guibg=lightcyan
+hi Cursorline cterm=NONE ctermbg=black guibg=black
 set cursorcolumn
-hi Cursorcolumn cterm=NONE ctermbg=lightgrey guibg=lightcyan
+hi Cursorcolumn cterm=NONE ctermbg=black guibg=black
 hi Search cterm=NONE ctermbg=lightblue
 
 " text format

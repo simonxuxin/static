@@ -22,22 +22,20 @@ syntax on
 map <space> <c-f>
 
 " look and feel
-" gui
 if has("gui_running")
-	set mouse=a
 	set go=cegrLtbm
 	set laststatus=2
 	set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
 else
-	let &t_Co=256
+	set mouse=a
 endif
-
+let &t_Co=256
 colorscheme molokai
 set cursorline
-hi Cursorline cterm=NONE ctermbg=black guibg=black
+hi Cursorline cterm=NONE ctermbg=darkblue guibg=darkblue
 set cursorcolumn
-hi Cursorcolumn cterm=NONE ctermbg=black guibg=black
-hi Search cterm=NONE ctermbg=lightblue
+hi Cursorcolumn cterm=NONE ctermbg=darkblue guibg=darkblue
+hi Search cterm=NONE ctermbg=darkblue guibg=darkblue
 
 " text format
 if has("win32")
@@ -94,6 +92,40 @@ set spellsuggest=5
 set complete=.,t,d,i
 set completeopt=menu,menuone
 
+" folder
+set foldmethod=indent
+
+
+" tabline
+set showtabline=2
+function GuiTabLabel()
+  let label = ''
+  let bufnrlist = tabpagebuflist(v:lnum)
+
+  " Add '+' if one of the buffers in the tab page is modified
+  for bufnr in bufnrlist
+    if getbufvar(bufnr, "&modified")
+      let label = '+'
+      break
+    endif
+  endfor
+
+  " Append the number of windows in the tab page if more than one
+  let wincount = tabpagewinnr(v:lnum, '$')
+  if wincount > 1
+    let label .= wincount
+  endif
+  if label != ''
+    let label .= ' '
+  endif
+
+  " Append the buffer name
+  return label . bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
+endfunction
+
+set guitablabel=%{GuiTabLabel()}
+
+
 " ctags
 let Tlist_Show_One_file = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -102,3 +134,10 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Process_File_Always = 0
 map <F9> :!ctags -R<cr>
 map <F2> :TlistToggle<cr>
+
+if has("win32")
+    let g:netrw_cygwin = 0
+    let g:netrw_scp_cmd = "c:\\windows\\scp.exe -i c:\\windows\\ssh.ppk"
+    let g:netrw_sftp_cmd = "c:\\windows\\sftp.exe -i c:\\windows\\ssh.ppk"
+endif
+

@@ -22,20 +22,24 @@ syntax on
 map <space> <c-f>
 
 " look and feel
+let &t_Co=256
+set cursorline
+set cursorcolumn
 if has("gui_running")
 	set go=cegrLtbm
 	set laststatus=2
 	set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
+
+    colorscheme molokai
+    hi Cursorline cterm=NONE guibg=darkblue
+    hi Cursorcolumn cterm=NONE guibg=darkblue
+    hi Search cterm=NONE guibg=darkblue
 else
+    hi Cursorline cterm=NONE ctermbg=cyan
+    hi Cursorcolumn cterm=NONE ctermbg=cyan
+    hi Search cterm=NONE ctermbg=red
 	set mouse=a
 endif
-let &t_Co=256
-colorscheme molokai
-set cursorline
-hi Cursorline cterm=NONE ctermbg=darkblue guibg=darkblue
-set cursorcolumn
-hi Cursorcolumn cterm=NONE ctermbg=darkblue guibg=darkblue
-hi Search cterm=NONE ctermbg=darkblue guibg=darkblue
 
 " text format
 if has("win32")

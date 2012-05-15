@@ -4,6 +4,7 @@
 " Last change:	2010 Jul 31
 
 " general
+filetype on
 set number
 set showcmd
 set hidden
@@ -20,26 +21,40 @@ set autoread
 set backspace=indent,eol,start
 syntax on
 map <space> <c-f>
+set textwidth=78
+
+" formats
+set fileformats=unix,dos
+
+" folder
+set foldmethod=marker
+
+" encoding
+set encoding=utf-8
+set fileencodings=utf-8,chinese
 
 " look and feel
-let &t_Co=256
 set cursorline
 set cursorcolumn
+let &t_Co=256
 if has("gui_running")
 	set go=cegrLtbm
+    set langmenu=zh_CN.UTF-8
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
 	set laststatus=2
 	set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
-
     colorscheme molokai
-    hi Cursorline cterm=NONE guibg=darkblue
-    hi Cursorcolumn cterm=NONE guibg=darkblue
-    hi Search cterm=NONE guibg=darkblue
+    hi Cursorline guibg=darkblue
+    hi Cursorcolumn guibg=darkblue
+    hi Search guibg=darkblue
 else
-    hi Cursorline cterm=NONE ctermbg=cyan
-    hi Cursorcolumn cterm=NONE ctermbg=cyan
+    hi Cursorline cterm=NONE ctermbg=lightcyan
+    hi Cursorcolumn cterm=NONE ctermbg=lightcyan
     hi Search cterm=NONE ctermbg=red
-	set mouse=a
+    hi Folded cterm=NONE ctermbg=blue
 endif
+set mouse=a
 
 " text format
 if has("win32")
@@ -82,7 +97,8 @@ else
 
 endif " has("autocmd")
 
-set nowrap
+
+" indent
 set tabstop=4
 set shiftwidth=4
 set smartindent
@@ -95,10 +111,6 @@ set spellsuggest=5
 " autocomplete
 set complete=.,t,d,i
 set completeopt=menu,menuone
-
-" folder
-set foldmethod=indent
-
 
 " tabline
 set showtabline=2

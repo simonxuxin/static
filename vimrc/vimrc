@@ -21,7 +21,10 @@ set autoread
 set backspace=indent,eol,start
 syntax on
 map <space> <c-f>
-set textwidth=78
+
+" max width = 79
+set textwidth=79
+set colorcolumn=79
 
 " formats
 set fileformats=unix,dos
@@ -37,22 +40,18 @@ set fileencodings=utf-8,chinese
 set cursorline
 set cursorcolumn
 let &t_Co=256
+colorscheme molokai
+hi Cursorline ctermbg=darkblue guibg=darkblue
+hi Cursorcolumn ctermbg=darkblue guibg=darkblue
+hi Search ctermbg=red guibg=darkblue
+hi Folded cterm=NONE ctermbg=blue
+set laststatus=2
+set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
 if has("gui_running")
 	set go=cegrLtbm
     set langmenu=zh_CN.UTF-8
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
-	set laststatus=2
-	set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
-    colorscheme molokai
-    hi Cursorline guibg=darkblue
-    hi Cursorcolumn guibg=darkblue
-    hi Search guibg=darkblue
-else
-    hi Cursorline cterm=NONE ctermbg=lightcyan
-    hi Cursorcolumn cterm=NONE ctermbg=lightcyan
-    hi Search cterm=NONE ctermbg=red
-    hi Folded cterm=NONE ctermbg=blue
 endif
 set mouse=a
 
@@ -114,7 +113,7 @@ set completeopt=menu,menuone
 
 " tabline
 set showtabline=2
-function GuiTabLabel()
+function! GuiTabLabel()
   let label = ''
   let bufnrlist = tabpagebuflist(v:lnum)
 

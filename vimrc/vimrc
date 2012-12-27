@@ -1,10 +1,15 @@
-" My vimrc file
-"
-" Maintainer:	Simon Xu<xixu@paypal.com>
-" Last change:	2010 Jul 31
+" autocommands
+if has("autocmd")
+  au!
+  autocmd filetype java setlocal omnifunc=javacomplete#Complete
+else
+  set autoindent
+endif
+" autocommands end
 
 " general
-filetype on
+syntax on
+filetype plugin indent on
 set number
 set showcmd
 set hidden
@@ -19,12 +24,18 @@ set infercase
 set notextmode
 set autoread
 set backspace=indent,eol,start
-syntax on
-map <space> <c-f>
+
+" indent
+set tabstop=2
+set shiftwidth=2
+set smartindent
+set expandtab
 
 " max width = 79
 set textwidth=79
-set colorcolumn=79
+if v:version > 702
+  set colorcolumn=79
+endif
 
 " formats
 set fileformats=unix,dos
@@ -33,27 +44,29 @@ set fileformats=unix,dos
 set foldmethod=marker
 
 " encoding
-set encoding=utf-8
+" set encoding=utf-8
 set fileencodings=utf-8,chinese
 
 " look and feel
-set cursorline
-set cursorcolumn
-let &t_Co=256
-colorscheme molokai
-hi Cursorline ctermbg=darkblue guibg=darkblue
-hi Cursorcolumn ctermbg=darkblue guibg=darkblue
-hi Search ctermbg=red guibg=darkblue
-hi Folded cterm=NONE ctermbg=blue
-set laststatus=2
-set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
 if has("gui_running")
 	set go=cegrLtbm
-    set langmenu=zh_CN.UTF-8
+    "set langmenu=zh_CN.UTF-8
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
+    set background=light
+else
+    set t_Co=256
+    set background=dark
 endif
-set mouse=a
+
+if has("mouse")
+    set mouse=a
+endif
+set cursorline
+set cursorcolumn
+set laststatus=2
+set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
+colorscheme wombat 
 
 " text format
 if has("win32")
@@ -61,47 +74,6 @@ if has("win32")
 else
     set gfn=Consolas\ 11
 endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent        " always set autoindenting on
-
-endif " has("autocmd")
-
-
-" indent
-set tabstop=4
-set shiftwidth=4
-set smartindent
-set expandtab
 
 " spell check
 set spelllang=en
@@ -139,7 +111,7 @@ function! GuiTabLabel()
 endfunction
 
 set guitablabel=%{GuiTabLabel()}
-
+" tabline end
 
 " ctags
 let Tlist_Show_One_file = 1
@@ -149,10 +121,7 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Process_File_Always = 0
 map <F9> :!ctags -R<cr>
 map <F2> :TlistToggle<cr>
+" ctags end
 
-if has("win32")
-    let g:netrw_cygwin = 0
-    let g:netrw_scp_cmd = "c:\\windows\\scp.exe -i c:\\windows\\ssh.ppk"
-    let g:netrw_sftp_cmd = "c:\\windows\\sftp.exe -i c:\\windows\\ssh.ppk"
-endif
+map <space> <c-f>
 

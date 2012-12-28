@@ -71,6 +71,8 @@ colorscheme wombat
 " text format
 if has("win32")
 	set gfn=Consolas:h11:cANSI
+  source $VIMRUNTIME/mswin.vim
+  behave mswin
 else
     set gfn=Consolas\ 11
 endif
@@ -125,3 +127,5 @@ map <F2> :TlistToggle<cr>
 
 map <space> <c-f>
 
+" toggle search highlight
+nnoremap <c-l> :set hlsearch!<cr>

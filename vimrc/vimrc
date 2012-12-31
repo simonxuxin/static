@@ -71,8 +71,8 @@ colorscheme wombat
 " text format
 if has("win32")
 	set gfn=Consolas:h11:cANSI
-  source $VIMRUNTIME/mswin.vim
-  behave mswin
+  "source $VIMRUNTIME/mswin.vim
+  "behave mswin
 else
     set gfn=Consolas\ 11
 endif

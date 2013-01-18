@@ -50,23 +50,24 @@ set fileencodings=utf-8,chinese
 " look and feel
 if has("gui_running")
 	set go=cegrLtbm
-    "set langmenu=zh_CN.UTF-8
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
-    set background=light
+  "set langmenu=zh_CN.UTF-8
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
+  set background=light
+  colorscheme wombat
 else
-    set t_Co=256
-    set background=dark
+  set t_Co=256
+  set background=dark
+  colorscheme jellybeans
 endif
 
 if has("mouse")
-    set mouse=a
+  set mouse=a
 endif
 set cursorline
 set cursorcolumn
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
-colorscheme wombat 
 
 " text format
 if has("win32")

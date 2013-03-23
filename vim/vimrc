@@ -42,6 +42,7 @@ if v:version > 702
     endif
   endfunction
   set colorcolumn=80
+  nnoremap <s-c> :exec ToggleColorColumn()<cr>
 endif
 
 " formats
@@ -137,4 +138,3 @@ map <space> <c-f>
 
 " toggle search highlight
 nnoremap <c-l> :set hlsearch!<cr>
-nnoremap <s-c> :exec ToggleColorColumn()<cr>

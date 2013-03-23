@@ -34,7 +34,14 @@ set expandtab
 " max width = 79
 set textwidth=79
 if v:version > 702
-  set colorcolumn=79
+  function! ToggleColorColumn()
+    if exists("&colorcolumn") && &colorcolumn > 0
+      set colorcolumn=
+    else
+      set colorcolumn=80
+    endif
+  endfunction
+  set colorcolumn=80
 endif
 
 " formats
@@ -130,3 +137,4 @@ map <space> <c-f>
 
 " toggle search highlight
 nnoremap <c-l> :set hlsearch!<cr>
+nnoremap <s-c> :exec ToggleColorColumn()<cr>

@@ -63,6 +63,11 @@ if has("gui_running")
   source $VIMRUNTIME/menu.vim
   set background=light
   colorscheme wombat
+  if has("win32")
+	  set gfn=Consolas:h11:cANSI
+  else
+	  set gfn=Monaco\ 11
+  endif
 else
   set t_Co=256
   set background=dark
@@ -76,15 +81,6 @@ set cursorline
 set cursorcolumn
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
-
-" text format
-if has("win32")
-	set gfn=Consolas:h11:cANSI
-  "source $VIMRUNTIME/mswin.vim
-  "behave mswin
-else
-    set gfn=Consolas\ 11
-endif
 
 " spell check
 set spelllang=en

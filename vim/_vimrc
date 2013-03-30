@@ -32,7 +32,6 @@ set smartindent
 set expandtab
 
 " max width = 79
-set textwidth=79
 if v:version > 702
   function! ToggleColorColumn()
     if exists("&colorcolumn") && &colorcolumn > 0
@@ -63,6 +62,14 @@ if has("gui_running")
   source $VIMRUNTIME/menu.vim
   set background=light
   colorscheme wombat
+ 
+  " text format
+  if has("win32")
+	  set gfn=Consolas:h11:cANSI
+  else
+    behave mswin
+    set gfn=Monaco\ 11
+  endif
 else
   set t_Co=256
   set background=dark
@@ -77,14 +84,6 @@ set cursorcolumn
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %=\|%{&ff}\|Ln:\ %l\ Col:\ %c
 
-" text format
-if has("win32")
-	set gfn=Consolas:h11:cANSI
-  "source $VIMRUNTIME/mswin.vim
-  "behave mswin
-else
-    set gfn=Consolas\ 11
-endif
 
 " spell check
 set spelllang=en

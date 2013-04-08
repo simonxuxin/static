@@ -23,6 +23,7 @@ set ignorecase
 set infercase
 set notextmode
 set autoread
+set nowrap
 set backspace=indent,eol,start
 
 " indent

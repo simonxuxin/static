@@ -56,25 +56,24 @@ set foldmethod=marker
 set fileencodings=utf-8,chinese
 
 " look and feel
+colorscheme jellybeans
 if has("gui_running")
 	set go=cegrLtbm
   "set langmenu=zh_CN.UTF-8
   source $VIMRUNTIME/delmenu.vim
   source $VIMRUNTIME/menu.vim
   set background=light
-  colorscheme wombat
  
   " text format
   if has("win32")
 	  set gfn=Consolas:h11:cANSI
   else
     behave mswin
-    set gfn=Monaco\ 11
+    set gfn=Monaco\ 10
   endif
 else
   set t_Co=256
   set background=dark
-  colorscheme jellybeans
 endif
 
 if has("mouse")

@@ -62,19 +62,18 @@ if has("gui_running")
   source $VIMRUNTIME/delmenu.vim
   source $VIMRUNTIME/menu.vim
   set background=light
-  colorscheme pyte
+  colorscheme solarized
  
   " text format
   if has("win32")
 	  set gfn=Consolas:h11:cANSI
   else
     behave mswin
-    set gfn=Monaco\ 10
+    set gfn=Monaco\ 11
   endif
 else
   set t_Co=256
-  set background=dark
-  colorscheme jellybeans
+  colorscheme github
 endif
 
 if has("mouse")

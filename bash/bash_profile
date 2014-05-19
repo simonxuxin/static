@@ -1,0 +1,71 @@
+#
+# ~/.bash_profile
+#
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+set -o vi
+export EDITOR=vim
+
+# Java
+JAVA_HOME=/opt/jdk7
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+
+# Teradata
+TD_HOME=/opt/teradata
+LD_LIBRARY_PATH=$TD_HOME/tdicu/lib:$TD_HOME/tdicu/lib64:$LD_LIBRARY_PATH
+
+PATH=$TD_HOME/client/bin:$PATH
+
+# Hadoop
+HADOOP_HOME=/usr/lib/hadoop
+PIG_HOME=/usr/lib/pig
+PATH=$HADOOP_HOME/bin:$PIG_HOME/bin:$PATH
+
+# Shifu
+export SHIFU_HOME=/opt/shifu
+PATH=$SHIFU_HOME/bin:$PATH
+
+export PATH
+
+###############################################################################
+# Python virtualenv Wrapper
+###############################################################################
+source /usr/bin/virtualenvwrapper_lazy.sh
+
+###############################################################################
+# Alias
+###############################################################################
+alias ls='ls --color=auto -F'
+alias grep='grep --color=auto'
+alias vi='vim'
+alias yd='ydcv -s --color=auto'
+alias bsh='java -cp /usr/share/java/bsh.jar bsh.Console'
+alias bteq='rlwrap bteq'
+alias tmux='tmux -2' # color256 fix
+alias yaourt='yaourt --nocolor --tmp /var/tmp'
+alias man='PAGER=most man'
+
+###############################################################################
+# Functions
+###############################################################################
+vimr() {
+  [ -z "$1" ] && { echo "vimr <host:file>" ; return ; }
+  host=$(echo $1 | cut -d':' -f1)
+  file=$(echo $1 | cut -d':' -f2)
+  vim scp://$host/$file
+}
+
+gvimr() {
+  [ -z "$1" ] && { echo "gvimr <host:file>" ; return ; }
+  host=$(echo $1 | cut -d':' -f1)
+  file=$(echo $1 | cut -d':' -f2)
+  gvim scp://$host/$file
+}
+
+proxy() {
+  https_proxy=http://10.65.253.45:3128 http_proxy=http://10.65.253.45:3128 $@
+}
+
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"

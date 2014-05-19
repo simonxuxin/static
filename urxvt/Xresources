@@ -1,7 +1,7 @@
   URxvt*background:                     [95]#FFFFFF
-  URxvt*boldFont:                       xft:Monaco:size=10:style=bold,xft:Microsoft Yahei:pixelsize=16:antialias=true:style=bold
+  URxvt*boldFont:                       xft:Monospace:size=11:style=bold:pixelsize=12
   URxvt*depth:                          32 
-  URxvt*font:                           xft:Monaco:size=10,xft:Microsoft Yahei:pixelsize=16:antialias=true
+  URxvt*font:                           xft:Monospace:size=11:pixelsize=12
   URxvt*iconFile:                       /usr/share/icons/gnome/16x16/apps/utilities-terminal.png
   URxvt*inputMethod:                    fcitx
   URxvt*loginShell:                     true
@@ -15,6 +15,7 @@
   URxvt*urgentOnBell:                   false
   URxvt*url-launcher:                   firefox
   URxvt*visualBell:                     true
+  URxvt*letterSpace:                    -2
 ! URxvt*answerbackString:               string
 ! URxvt*background.border:              boolean
 ! URxvt*background.expr:                string
@@ -73,7 +74,6 @@
 ! URxvt*italicFont:                     fontname
 ! URxvt*jumpScroll:                     boolean
 ! URxvt*keysym.sym:                     keysym
-! URxvt*letterSpace:                    number
 ! URxvt*lineSpace:                      number
 ! URxvt*mapAlert:                       boolean
 ! URxvt*matcher.button:                 string
